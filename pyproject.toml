@@ -8,7 +8,7 @@ keywords = ["ofx", "banking", "statement", "plugin", "ofxstatement"]
 homepage = "https://github.com/bennesp/ofxstatement-satispay"
 
 [tool.poetry.scripts]
-satispay = "ofxstatement_sample.plugin:SatispayPlugin"
+satispay = "ofxstatement_satispay.plugin:SatispayPlugin"
 
 [tool.poetry.dependencies]
 python = "^3.12"
