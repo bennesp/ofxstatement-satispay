@@ -36,6 +36,8 @@ class SatispayParser(CsvStatementParser):
       stmt.start_date = min(stmt.lines, key=lambda x: x.date).date
       stmt.end_date = max(stmt.lines, key=lambda x: x.date).date
 
+    stmt.lines = list(reversed(stmt.lines))
+
     return stmt
 
   def split_records(self) -> Iterable[str]:
