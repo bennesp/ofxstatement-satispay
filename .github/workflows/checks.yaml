@@ -9,7 +9,7 @@ on:
 
 jobs:
   ruff:
-    name: 🧹 Format and lint
+    name: 🧹 Format, lint and security checks
     runs-on: ubuntu-latest
 
     steps:
@@ -29,6 +29,9 @@ jobs:
       
       - name: 🧹 Run ruff lint
         run: poetry run ruff check --diff
+      
+      - name: 🛡️ Run bandit
+        run: poetry run bandit -r .
 
   unit-test:
     name: 🧪 Unit Test
