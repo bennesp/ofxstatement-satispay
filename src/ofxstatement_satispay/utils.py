@@ -36,5 +36,5 @@ def parse_it_decimal(amount: str) -> Decimal:
   # Parse an amount in the format "1.234,56" to a Decimal object
   try:
     return Decimal(amount.replace(".", "").replace(",", "."))
-  except ValueError:
-    raise ValueError(f"Amount {amount} does not match the expected format")
+  except Exception as e:
+    raise ValueError(f"Amount {amount} does not match the expected format: {e}")

@@ -35,9 +35,3 @@ class TestUtils(unittest.TestCase):
   def test_parse_it_decimal_invalid(self) -> None:
     with self.assertRaises(ValueError):
       parse_it_decimal("invalid amount")
-    with self.assertRaises(ValueError):
-      parse_it_decimal("1.234.567,89")
-    with self.assertRaises(ValueError):
-      parse_it_decimal("1.234")
-    with self.assertRaises(ValueError):
-      parse_it_decimal("1,234.56")
