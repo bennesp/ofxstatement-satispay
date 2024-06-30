@@ -3,7 +3,6 @@ import locale
 from datetime import datetime
 from decimal import Decimal
 from babel.numbers import parse_decimal
-
 from typing import Iterable, List, Optional, IO
 
 from ofxstatement.plugin import Plugin
@@ -11,6 +10,7 @@ from ofxstatement.parser import CsvStatementParser
 from ofxstatement.statement import Statement, StatementLine
 from ofxstatement.exceptions import ParseError
 
+from .utils import parse_it_datetime
 
 class SatispayPlugin(Plugin):
   """A plugin to parse CSV files exported from Satispay"""
@@ -63,17 +63,13 @@ class SatispayParser(CsvStatementParser):
     if line['state'] != "APPROVED":
       return None
 
-    # To parse the date and the amount
-    cur_locale = "it_IT"
-    locale.setlocale(locale.LC_ALL, cur_locale)
-
     stmt_line.id = line["id"]
     stmt_line.payee = line["name"]
-    stmt_line.date = datetime.strptime(line["date"], "%d %b %Y. %H:%M:%S")
-    stmt_line.amount = parse_decimal(line["amount"], locale=cur_locale)
+    stmt_line.date = parse_it_datetime(line["date"])
+    stmt_line.amount = parse_decimal(line["amount"], locale="it_IT")
     stmt_line.currency = line["currency"]
-    stmt_line.memo = f"kind: {line["kind"]}"
+    stmt_line.memo = f"kind: {line['kind']}"
     if line["extra info"]:
-      stmt_line.memo += f", comment: {line["extra info"]}"
+      stmt_line.memo += f", comment: {line['extra info']}"
 
     return stmt_line

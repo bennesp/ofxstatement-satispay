@@ -11,7 +11,7 @@ homepage = "https://github.com/bennesp/ofxstatement-satispay"
 satispay = "ofxstatement_satispay.plugin:SatispayPlugin"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.8"
 ofxstatement = "^0.9.1"
 babel = "^2.15.0"
 
