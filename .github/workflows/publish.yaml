@@ -32,6 +32,9 @@ jobs:
 
       - name: 📦 Install dependencies
         run: poetry install --no-root --no-interaction
+      
+      - name: 🔄 Enable dynamic Versioning
+        run: poetry self add "poetry-dynamic-versioning[plugin]"
 
       - name: 📦 Build package
         run: poetry build
