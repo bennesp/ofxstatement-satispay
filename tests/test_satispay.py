@@ -20,7 +20,9 @@ class TestSatispayPlugin(unittest.TestCase):
     self.assertIsNotNone(statement)
     self.assertEqual(len(statement.lines), 4)
 
-    self.assertEqual(statement.start_date, datetime.fromisoformat("2022-03-01T09:44:27"))
+    self.assertEqual(
+      statement.start_date, datetime.fromisoformat("2022-03-01T09:44:27")
+    )
     self.assertEqual(statement.end_date, datetime.fromisoformat("2024-07-24T02:59:45"))
 
     self.assertEqual(statement.lines[0].id, "17f08d62-7e44-4400-b849-6b1f4bb1d546")
@@ -28,7 +30,10 @@ class TestSatispayPlugin(unittest.TestCase):
     self.assertEqual(statement.lines[2].amount, -2)
     self.assertEqual(statement.lines[3].currency, "EUR")
     self.assertEqual(statement.lines[0].memo, "kind: BANK")
-    self.assertEqual(statement.lines[1].memo, "kind: P2P, comment: Adesso lo trovo il biglietto 🎟️")
+    self.assertEqual(
+      statement.lines[1].memo, "kind: P2P, comment: Adesso lo trovo il biglietto 🎟️"
+    )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
   unittest.main()

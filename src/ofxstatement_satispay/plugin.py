@@ -1,8 +1,4 @@
 import csv
-import locale
-from datetime import datetime
-from decimal import Decimal
-from babel.numbers import parse_decimal
 from typing import Iterable, List, Optional, IO
 
 from ofxstatement.plugin import Plugin
@@ -10,7 +6,8 @@ from ofxstatement.parser import CsvStatementParser
 from ofxstatement.statement import Statement, StatementLine
 from ofxstatement.exceptions import ParseError
 
-from .utils import parse_it_datetime
+from .utils import parse_it_datetime, parse_it_decimal
+
 
 class SatispayPlugin(Plugin):
   """A plugin to parse CSV files exported from Satispay"""
@@ -38,12 +35,12 @@ class SatispayParser(CsvStatementParser):
     if stmt.lines:
       stmt.start_date = min(stmt.lines, key=lambda x: x.date).date
       stmt.end_date = max(stmt.lines, key=lambda x: x.date).date
-    
+
     return stmt
 
   def split_records(self) -> Iterable[str]:
     """Return iterable object consisting of a line per transaction"""
-    return csv.DictReader(self.fd, delimiter=',', quotechar="\"")
+    return csv.DictReader(self.fd, delimiter=",", quotechar='"')
 
   def parse_record(self, line: List[Optional[str]]) -> StatementLine:
     """Parse given transaction line and return StatementLine object"""
@@ -60,13 +57,13 @@ class SatispayParser(CsvStatementParser):
     """Parse transaction line and return StatementLine object"""
     stmt_line: StatementLine = super().parse_record(line)
 
-    if line['state'] != "APPROVED":
+    if line["state"] != "APPROVED":
       return None
 
     stmt_line.id = line["id"]
     stmt_line.payee = line["name"]
     stmt_line.date = parse_it_datetime(line["date"])
-    stmt_line.amount = parse_decimal(line["amount"], locale="it_IT")
+    stmt_line.amount = parse_it_decimal(line["amount"])
     stmt_line.currency = line["currency"]
     stmt_line.memo = f"kind: {line['kind']}"
     if line["extra info"]:
