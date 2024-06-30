@@ -3,7 +3,7 @@ from typing import Iterable, List, Optional, IO
 
 from ofxstatement.plugin import Plugin
 from ofxstatement.parser import CsvStatementParser
-from ofxstatement.statement import Statement, StatementLine
+from ofxstatement.statement import Statement, StatementLine, Currency
 from ofxstatement.exceptions import ParseError
 
 from .utils import parse_it_datetime, parse_it_decimal
@@ -64,7 +64,7 @@ class SatispayParser(CsvStatementParser):
     stmt_line.payee = line["name"]
     stmt_line.date = parse_it_datetime(line["date"])
     stmt_line.amount = parse_it_decimal(line["amount"])
-    stmt_line.currency = line["currency"]
+    stmt_line.currency = Currency(line["currency"])
     stmt_line.memo = f"kind: {line['kind']}"
     if line["extra info"]:
       stmt_line.memo += f", comment: {line['extra info']}"
