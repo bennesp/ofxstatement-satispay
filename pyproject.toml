@@ -7,7 +7,7 @@ readme = "README.md"
 keywords = ["ofx", "banking", "statement", "plugin", "ofxstatement"]
 homepage = "https://github.com/bennesp/ofxstatement-satispay"
 
-[tool.poetry.scripts]
+[tool.poetry.plugins."ofxstatement"]
 satispay = "ofxstatement_satispay.plugin:SatispayPlugin"
 
 [tool.poetry.dependencies]

@@ -13,7 +13,7 @@ from ofxstatement.exceptions import ParseError
 
 
 class SatispayPlugin(Plugin):
-  """Satispay plugin (for developers only)"""
+  """A plugin to parse CSV files exported from Satispay"""
 
   def get_parser(self, filename: str) -> "SatispayParser":
     fd = open(filename, "r")
