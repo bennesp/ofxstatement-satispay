@@ -1,0 +1,6 @@
+id,name,state,kind,date,amount,currency,extra info
+17f08d62-7e44-4400-b849-6b1f4bb1d546,"Ricarica Satispay",APPROVED,BANK,"24 lug 2024. 02:59:45","30,40 ",EUR,""
+9c4ce4dc-49ec-484e-b703-4e1dd20014bb,"Ajeje Brazorf",APPROVED,P2P,"22 giu 2024. 19:45:52","-17,00 ",EUR,"Adesso lo trovo il biglietto 🎟️"
+b84e42ce-78e3-4396-bcbc-fd6344c27f5b,"Supermercato",APPROVED,C2B,"20 mag 2024. 12:21:36","-2,00 ",EUR,""
+098a89f6-7764-4f09-8caa-cbfa18347f22,"Conte Dracula",NOT APPROVED,P2P,"13 apr 2023. 11:48:16","-5,00 ",EUR,""
+59202ceb-f965-4f20-8176-06ff6b115403,"Caffè Centrale",APPROVED,C2B,"1 mar 2022. 09:44:27","-2,40 ",EUR,""

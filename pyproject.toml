@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ofxstatement-satispay"
+version = "0.1.3"
+description = "A ofxstatement plugin to manage Satispay CSVs"
+authors = ["bennesp <bennesp@users.noreply.github.com>"]
+readme = "README.md"
+keywords = ["ofx", "banking", "statement", "plugin", "ofxstatement"]
+homepage = "https://github.com/bennesp/ofxstatement-satispay"
+
+[tool.poetry.scripts]
+satispay = "ofxstatement_sample.plugin:SatispayPlugin"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+ofxstatement = "^0.9.1"
+babel = "^2.15.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.autopep8]
+indent-size = 2
