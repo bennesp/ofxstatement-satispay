@@ -11,13 +11,16 @@ homepage = "https://github.com/bennesp/ofxstatement-satispay"
 satispay = "ofxstatement_satispay.plugin:SatispayPlugin"
 
 [tool.poetry.dependencies]
-python = ">=3.8"
+python = ">=3.8.1"
 ofxstatement = "^0.9.1"
 babel = "^2.15.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.autopep8]
-indent-size = 2
+[tool.ruff]
+indent-width = 2
