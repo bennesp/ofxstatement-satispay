@@ -25,13 +25,13 @@ class TestSatispayPlugin(unittest.TestCase):
     )
     self.assertEqual(statement.end_date, datetime.fromisoformat("2024-07-24T02:59:45"))
 
-    self.assertEqual(statement.lines[0].id, "17f08d62-7e44-4400-b849-6b1f4bb1d546")
-    self.assertEqual(statement.lines[1].payee, "Ajeje Brazorf")
-    self.assertEqual(statement.lines[2].amount, -2)
-    self.assertEqual(statement.lines[3].currency.symbol, "EUR")
-    self.assertEqual(statement.lines[0].memo, "kind: BANK")
+    self.assertEqual(statement.lines[3].id, "17f08d62-7e44-4400-b849-6b1f4bb1d546")
+    self.assertEqual(statement.lines[2].payee, "Ajeje Brazorf")
+    self.assertEqual(statement.lines[1].amount, -2)
+    self.assertEqual(statement.lines[0].currency.symbol, "EUR")
+    self.assertEqual(statement.lines[3].memo, "kind: BANK")
     self.assertEqual(
-      statement.lines[1].memo, "kind: P2P, comment: Adesso lo trovo il biglietto 🎟️"
+      statement.lines[2].memo, "kind: P2P, comment: Adesso lo trovo il biglietto 🎟️"
     )
 
 
